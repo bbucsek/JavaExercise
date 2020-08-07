@@ -5,23 +5,23 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
 
-public class DataQueue implements Queue {
+public class DataQueue<T> implements Queue {
 
     private static final int DEFAULT_SIZE = 10;
 
-    private Object[] data;
+    private T[] data;
     private int size, front, rear;
 
 
     public DataQueue() {
-        this.data = new Object[DEFAULT_SIZE];
+        this.data = (T[]) new Object[DEFAULT_SIZE];
         this.size = 0;
         this.rear = 0;
         this.front = 0;
     }
 
     public DataQueue(int size) {
-        this.data = new Object[size];
+        this.data = (T[]) new Object[size];
         this.size = 0;
         this.rear = 0;
         this.front = 0;
@@ -60,7 +60,7 @@ public class DataQueue implements Queue {
 
     @Override
     public boolean add(Object o) {
-        data[rear++] = o;
+        data[rear++] = (T) o;
         size++;
         if (rear == data.length) {
             increaseDataSize();
@@ -85,7 +85,7 @@ public class DataQueue implements Queue {
 
     @Override
     public void clear() {
-        data = new Object[DEFAULT_SIZE];
+        data = (T[]) new Object[DEFAULT_SIZE];
         size = front = rear = 0;
     }
 
@@ -115,9 +115,9 @@ public class DataQueue implements Queue {
     }
 
     @Override
-    public Object poll() {
+    public T poll() {
         size--;
-        Object o = data[front++];
+        T o = data[front++];
         if (front > 4) {
             reArrangeData();
         }
@@ -126,7 +126,7 @@ public class DataQueue implements Queue {
     }
 
     private void reArrangeData() {
-        Object[] newData = new Object[size * 2];
+        T[] newData = (T[]) new Object[size * 2];
         System.arraycopy(data, front, newData, 0, size);
         data = newData;
         front = 0;

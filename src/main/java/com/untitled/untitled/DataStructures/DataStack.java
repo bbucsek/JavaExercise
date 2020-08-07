@@ -6,16 +6,16 @@ public class DataStack<T> {
 
     private static int DEFAULT_SIZE = 10;
 
-    private Object[] data;
+    private T[] data;
     private int index;
 
     public DataStack() {
-        this.data = new Object[DEFAULT_SIZE];
+        this.data = (T[]) new Object[DEFAULT_SIZE];
         this.index = -1;
     }
 
     public DataStack(int size) {
-        this.data = new Object[size];
+        this.data = (T[]) new Object[size];
         this.index = -1;
     }
 
@@ -27,7 +27,7 @@ public class DataStack<T> {
         return data[0] == null;
     }
 
-    public boolean contains(Object o) {
+    public boolean contains(T o) {
         for (int i = 0; i < index + 1; i++) {
             if (data[i].equals(o)) {
                 return true;
@@ -35,14 +35,14 @@ public class DataStack<T> {
         }
         return false;
     }
-    public void push(Object o) {
+    public void push(T o) {
         if (index + 1 == data.length) {
             increaseStackSize();
         }
         data[++index] = o;
     }
 
-    public boolean remove(Object o) {
+    public boolean remove(T o) {
         if (index == -1) {
             return false;
         }
@@ -51,7 +51,7 @@ public class DataStack<T> {
     }
 
     public void clear() {
-        data = new Object[DEFAULT_SIZE];
+        data =  (T[]) new Object[DEFAULT_SIZE];
         index = -1;
     }
 

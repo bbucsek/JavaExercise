@@ -114,7 +114,8 @@ public class LinkedListTest {
         for (int i = 0; i < 500; i++) {
             list.add(i);
         }
-        assertThat(list.contains(150)).isTrue();
+        assertThat(list.get(150)).isEqualTo(150);
+        //assertThat(list.contains(150)).isTrue();
     }
 
 
