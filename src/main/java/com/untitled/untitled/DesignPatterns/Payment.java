@@ -16,6 +16,10 @@ public class Payment {
         this.interest = interest;
     }
 
+    public static PaymentBuilder builder() {
+        return new PaymentBuilder();
+    }
+
     public int getSalary() {
         return salary;
     }

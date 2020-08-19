@@ -28,7 +28,7 @@ public class Try {
 
     public static void main(String[] args) {
 
-        Payment payment = new PaymentBuilder().loan(200).salary(500).tax(300).build();
+        Payment payment = Payment.builder().loan(200).salary(500).tax(300).build();
         System.out.println(payment.getLoan() + " " + payment.getSalary() + " " + payment.getTax());
     }
 
