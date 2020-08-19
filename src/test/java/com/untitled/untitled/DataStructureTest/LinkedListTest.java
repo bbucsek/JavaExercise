@@ -6,6 +6,8 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.NoSuchElementException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -109,14 +111,118 @@ public class LinkedListTest {
     }
 
     @Test
+    public void testGetFirst() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        assertThat(list.getFirst()).isEqualTo(0);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testGetFirstEmpty() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        list.getFirst();
+    }
+
+    @Test
+    public void testGetLast() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        assertThat(list.getLast()).isEqualTo(499);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testGetLastEmpty() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        list.getLast();
+    }
+
+    @Test
     public void testContains() {
         DataLinkedList<Integer> list = new DataLinkedList<>();
         for (int i = 0; i < 500; i++) {
             list.add(i);
         }
-        assertThat(list.get(150)).isEqualTo(150);
-        //assertThat(list.contains(150)).isTrue();
+        assertThat(list.contains(10)).isTrue();
+        assertThat(list.contains(100)).isTrue();
+        assertThat(list.contains(240)).isTrue();
     }
+
+    @Test
+    public void testNotContains() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        assertThat(list.contains(600)).isFalse();
+    }
+
+    @Test
+    public void testIndexOf() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        assertThat(list.indexOf(240)).isEqualTo(240);
+    }
+
+    @Test
+    public void testRemoveFirst() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        list.removeFirst();
+        assertThat(list.size()).isEqualTo(499);
+        assertThat(list.get(0)).isEqualTo(1);
+    }
+
+    @Test
+    public void testRemove() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 1; i < 501; i++) {
+            list.add(i);
+        }
+        list.remove(10);
+        assertThat(list.size()).isEqualTo(499);
+        assertThat(list.get(9)).isEqualTo(11);
+    }
+
+    @Test
+    public void testRemoveLast() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 1; i < 501; i++) {
+            list.add(i);
+        }
+        list.remove(500);
+        list.remove(450);
+        list.remove(499);
+        assertThat(list.size()).isEqualTo(497);
+        assertThat(list.get(496)).isEqualTo(498);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveNull() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        list.remove(null);
+    }
+
+    @Test(expected = NoSuchElementException.class)
+    public void testRemoveInvalid() {
+        DataLinkedList<Integer> list = new DataLinkedList<>();
+        for (int i = 0; i < 500; i++) {
+            list.add(i);
+        }
+        list.remove(1000);
+    }
+
+
 
 
 }

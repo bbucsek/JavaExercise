@@ -14,7 +14,6 @@ public class UntitledApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(UntitledApplication.class, args);
-        Map<String, Integer> asd = new HashMap<>();
     }
 
 }
