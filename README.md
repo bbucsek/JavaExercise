@@ -1,6 +1,4 @@
 # JavaExercise
-# Java-exercise
-
 
 This is a simple Java exercise project. 
 
