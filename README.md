@@ -15,4 +15,4 @@ Data Structures:
   - Stack
 
 Design Patterns:
-  -Builder Pattern
+  - Builder Pattern
