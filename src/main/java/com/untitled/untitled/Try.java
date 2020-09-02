@@ -2,6 +2,7 @@ package com.untitled.untitled;
 
 import com.untitled.untitled.Algorithms.Sorting.BubbleSort;
 import com.untitled.untitled.Algorithms.Sorting.InsertionSort;
+import com.untitled.untitled.Algorithms.Sorting.SelectionSort;
 import com.untitled.untitled.DataStructures.DataBinarySearchTree;
 import com.untitled.untitled.DataStructures.DataHashMap;
 import com.untitled.untitled.DesignPatterns.Payment;
@@ -31,23 +32,21 @@ public class Try {
     }
 
     public static void main(String[] args) {
+        Integer[] array = {5, 4, 3, 1, 2, 10, 6};
+
 
         //Payment payment = Payment.builder().loan(200).salary(500).tax(300).build();
         //System.out.println(payment.getLoan() + " " + payment.getSalary() + " " + payment.getTax());
 
-        /*BubbleSort bubbleSort = new BubbleSort();
-        Integer[] arr = { 5, 4, 3, 1, 2, 10, 6};
-        bubbleSort.sort(arr);
-        for (int num : arr) {
-            System.out.println(num);
-        }*/
-
-        InsertionSort insertionSort = new InsertionSort();
-        Integer[] array = {5, 6, 3};
-        insertionSort.sort2(array);
+        SelectionSort selectionSort = new SelectionSort();
+        selectionSort.sort(array);
         for (Integer num : array) {
             System.out.println(num);
         }
-    }
 
+    }
 }
+
+
+
+

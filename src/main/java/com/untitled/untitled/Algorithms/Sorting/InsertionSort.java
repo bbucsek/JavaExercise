@@ -2,7 +2,7 @@ package com.untitled.untitled.Algorithms.Sorting;
 
 public class InsertionSort {
 
-    public Integer[] sort(Integer[] array) {
+    public void sort(Integer[] array) {
 
         for (int i = 1; i < array.length; i++) {
             int current = array[i];
@@ -13,6 +13,5 @@ public class InsertionSort {
             }
             array[j + 1] = current;
         }
-        return array;
     }
 }
