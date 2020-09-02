@@ -2,7 +2,7 @@ package com.untitled.untitled.Algorithms.Sorting;
 
 public class BubbleSort {
 
-    public int[] sort(int[] array) {
+    public Integer[] sort(Integer[] array) {
         if (array.length <= 1) {
             return array;
         }
